@@ -227,6 +227,17 @@
   .ruta-adic-wrap{margin-top:10px}
   .adic-title{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#c9bfe6;font-weight:700}
   .adic-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+  /* Tabs de contratos */
+  .tabs-contratos-nav{display:flex;gap:8px;margin-bottom:14px}
+  .tab-contrato-btn{background:var(--chip);color:#fff;border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;padding:10px 20px;font-weight:700;font-size:14px;cursor:pointer;
+    font-family:inherit;background:rgba(255,255,255,.08);transition:.2s}
+  .tab-contrato-btn:hover{background:rgba(255,255,255,.16)}
+  .tab-contrato-btn.activo{background:linear-gradient(135deg,var(--purple),var(--violet));border-color:transparent;box-shadow:0 8px 20px rgba(104,37,205,.45)}
+  .tab-contrato-panel{display:none}
+  .tab-contrato-panel.activo{display:block}
+  .tab-contrato-frame{position:relative;padding-top:129%;border-radius:18px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35);background:#fff}
+  @media(min-width:720px){.tab-contrato-frame{padding-top:75%}}
   .adic-chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12.5px;color:var(--purple-dark);font-weight:500}
   /* Reconocimiento de graduada (imagen, al final) */
   .grad-cert{margin:46px 0 6px;text-align:center}
@@ -367,6 +378,47 @@
         <iframe src="https://drive.google.com/file/d/1Ks9HJ8QFoQG25bOfzY38fpvsKQX8Rb1d/preview" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" allow="autoplay" allowfullscreen></iframe>
       </div>
     </section>
+
+    <section class="ruta" id="contratos-hc100">
+      <h2 class="ruta-title">📑 Contratos de Exclusiva / No Exclusiva y HC100</h2>
+      <p class="ruta-sub">Nuestros contratos son contratos inscritos ante PROFECO, los conceptos generales no son modificables; personalizamos vigencia, valor de la propiedad y datos de los propietarios. Es un contrato de adhesión, por lo que no es modificable y sólo tiene valor con las firmas del apoderado legal de Habi.</p>
+      <div class="tabs-contratos">
+        <div class="tabs-contratos-nav">
+          <button type="button" class="tab-contrato-btn activo" data-tab="con-hc100">Con HC100</button>
+          <button type="button" class="tab-contrato-btn" data-tab="sin-hc100">Sin HC100</button>
+        </div>
+        <div id="tab-con-hc100" class="tab-contrato-panel activo" data-drive-id="1RgCDNRNEwtOQ8fxCpELvc0WTzQmdKzUR">
+          <div class="tab-contrato-frame"></div>
+        </div>
+        <div id="tab-sin-hc100" class="tab-contrato-panel" data-drive-id="1fGJ2YMLvedVZU6bgz-9OduAZUq-QG9cI">
+          <div class="tab-contrato-frame"></div>
+        </div>
+      </div>
+    </section>
+    <script>
+      (function(){
+        function cargarPanel(panel){
+          if(panel.dataset.cargado) return;
+          var id = panel.getAttribute('data-drive-id');
+          var frame = panel.querySelector('.tab-contrato-frame');
+          frame.innerHTML = '<iframe src="https://drive.google.com/file/d/'+id+'/preview" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" allow="autoplay" allowfullscreen></iframe>';
+          panel.dataset.cargado = "1";
+        }
+        var btns = document.querySelectorAll('.tab-contrato-btn');
+        btns.forEach(function(btn){
+          btn.addEventListener('click', function(){
+            btns.forEach(function(b){ b.classList.remove('activo'); });
+            document.querySelectorAll('.tab-contrato-panel').forEach(function(p){ p.classList.remove('activo'); });
+            btn.classList.add('activo');
+            var panel = document.getElementById('tab-'+btn.dataset.tab);
+            panel.classList.add('activo');
+            cargarPanel(panel);
+          });
+        });
+        var primero = document.querySelector('.tab-contrato-panel.activo');
+        if(primero) cargarPanel(primero);
+      })();
+    </script>
 
     <div class="note">A continuación encontrarás los materiales descargables. Haz clic en el archivo que necesites para que se descargue automáticamente. Luego, súbelo a tu Google Drive corporativo para visualizarlo y editarlo.</div>
 
