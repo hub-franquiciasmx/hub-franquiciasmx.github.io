@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capacitación Franquicias · Tuhabi</title>
+<link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1VoVeDIQkvYjzUJBRKEF3Rd0AEA0Zl2WZ=w64">
+<meta name="theme-color" content="#6825cd">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --purple:#6825cd; --purple-dark:#4b1a8b; --violet:#7f2df6;
+    --lavender:#a566f7; --lavender-light:#dbc5fa;
+    --bg:#f6f3fc; --card:#ffffff; --text:#1d1330; --muted:#6f6788;
+    --line:#ece7f7; --chip:#f1ecfb; --radius:22px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'DM Sans',-apple-system,Segoe UI,Roboto,sans-serif;
+    background:linear-gradient(180deg,#211446 0%,#150c2b 100%);background-attachment:fixed;
+    color:#ece8f5;line-height:1.55}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  /* HERO con logo protagonista */
+  .hero{position:relative;overflow:hidden;text-align:center;color:#fff;
+    background:linear-gradient(135deg,#4b1a8b 0%,#6825cd 52%,#7f2df6 100%);
+    border-radius:0 0 42px 42px;padding:30px 20px 48px}
+  .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;
+    background:rgba(255,255,255,.08)}
+  .hero::before{width:320px;height:320px;top:-120px;right:-80px}
+  .hero::after{width:220px;height:220px;bottom:-110px;left:-60px}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    position:relative;z-index:1;max-width:1040px;margin:0 auto 8px}
+  .nav .brand{font-weight:700;font-size:15px;opacity:.95}
+  .nav .src{font-size:13px;opacity:.92}
+  .nav .src a{text-decoration:underline}
+  .logo-stage{position:relative;z-index:1;margin:14px auto 6px;display:flex;justify-content:center}
+  .logo-stage::before{content:"";position:absolute;width:360px;height:360px;
+    background:radial-gradient(circle,rgba(255,255,255,.18) 0%,rgba(255,255,255,0) 65%);
+    top:50%;left:50%;transform:translate(-50%,-50%)}
+  .hero-logo{position:relative;max-height:210px;max-width:min(92%,560px);object-fit:contain;
+    display:block;filter:drop-shadow(0 16px 34px rgba(0,0,0,.30))}
+  .logo-fb{position:relative;font-weight:700;color:#fff;font-size:30px;letter-spacing:.01em}
+  .logo-stage{gap:40px;align-items:center}
+  .lk-logo{position:relative;height:96px;width:auto;max-width:300px;object-fit:contain;display:block}
+  .lk-univ{filter:drop-shadow(0 10px 22px rgba(0,0,0,.22))}
+  .lk-pulppo{mix-blend-mode:multiply}
+  @media(max-width:560px){.lk-logo{height:60px;max-width:160px}.logo-stage{gap:22px}}
+  .eyebrow{position:relative;z-index:1;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12px;opacity:.92;margin-top:8px}
+  h1{position:relative;z-index:1;margin:10px auto 10px;font-size:40px;letter-spacing:-.02em;font-weight:700;max-width:18ch;line-height:1.12}
+  .sub{position:relative;z-index:1;opacity:.95;max-width:600px;margin:0 auto;font-size:15.5px}
+  .tagline{position:relative;z-index:1;margin-top:14px;font-weight:700;font-size:15px}
+  .hero-cta-row{position:relative;z-index:1;margin-top:22px}
+  .hero-cta{display:inline-block;background:#fff;color:var(--purple-dark);font-weight:700;font-size:15px;
+    padding:14px 30px;border-radius:999px;text-decoration:none;box-shadow:0 12px 28px rgba(0,0,0,.24);transition:transform .15s}
+  .hero-cta:hover{transform:translateY(-2px)}
+
+  /* Galería de imágenes amigables */
+  .gallery{position:relative;z-index:1;display:flex;gap:14px;justify-content:center;
+    flex-wrap:wrap;margin:28px auto 4px;max-width:920px}
+  .gallery img{width:240px;height:150px;object-fit:cover;border-radius:18px;
+    border:4px solid rgba(255,255,255,.85);box-shadow:0 14px 30px rgba(0,0,0,.22)}
+
+  .metrics{position:relative;z-index:1;display:flex;gap:34px;flex-wrap:wrap;
+    justify-content:center;margin:28px auto 0}
+  .metric b{display:block;font-size:30px;font-weight:700;line-height:1}
+  .metric span{font-size:13px;opacity:.92}
+
+  /* Toolbar / buscador */
+  .toolbar{position:sticky;top:0;z-index:5;background:rgba(27,16,54,.86);
+    backdrop-filter:blur(10px);padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .search-row{max-width:1080px;margin:0 auto;padding:0 20px}
+  .search{width:100%;background:var(--card);border:2px solid var(--line);color:var(--text);
+    padding:14px 20px;border-radius:999px;font-size:15px;outline:none;font-family:inherit;
+    box-shadow:0 6px 20px rgba(75,26,139,.06)}
+  .search:focus{border-color:var(--violet)}
+
+  /* Buscador inteligente (por palabras clave -> secciones/apps) */
+  .finder{position:relative;margin:0 0 24px}
+  .finder-input{width:100%;background:var(--card);border:2px solid var(--line);color:var(--text);
+    padding:15px 22px;border-radius:999px;font-size:15px;outline:none;font-family:inherit;
+    box-shadow:0 8px 24px rgba(0,0,0,.25)}
+  .finder-input:focus{border-color:var(--violet)}
+  .finder-results{position:absolute;left:0;right:0;top:calc(100% + 8px);background:var(--card);
+    border-radius:18px;box-shadow:0 20px 46px rgba(0,0,0,.35);overflow:hidden;z-index:20;display:none;
+    max-height:360px;overflow-y:auto}
+  .finder-results.open{display:block}
+  .finder-item{display:flex;align-items:center;gap:12px;padding:13px 20px;cursor:pointer;text-align:left}
+  .finder-item:hover,.finder-item.hi{background:var(--chip)}
+  .finder-item .fi-ico{font-size:18px;flex:none;width:30px;height:30px;border-radius:9px;background:var(--chip);
+    display:flex;align-items:center;justify-content:center}
+  .finder-item .fi-txt{flex:1;min-width:0}
+  .finder-item .fi-t{font-size:14px;font-weight:600;color:var(--text)}
+  .finder-item .fi-s{font-size:12px;color:var(--muted);margin-top:1px}
+  .finder-item .fi-tag{font-size:10.5px;font-weight:700;color:var(--purple);background:var(--chip);
+    border-radius:999px;padding:3px 9px;flex:none;text-transform:uppercase;letter-spacing:.03em}
+  .finder-empty{padding:16px 20px;color:var(--muted);font-size:13.5px}
+
+  .note{background:var(--chip);border-radius:16px;padding:14px 18px;margin:24px 0;
+    font-size:13.5px;color:var(--purple-dark)}
+  .toc{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+  .toc a{background:var(--card);border:1px solid var(--line);border-radius:999px;
+    padding:7px 14px;font-size:13px;color:var(--purple-dark);font-weight:500}
+  .toc a:hover{border-color:var(--violet)}
+  .toc a.tocfeat{background:linear-gradient(135deg,var(--purple),var(--violet));color:#fff;border:none}
+
+  /* CUADROS DE SECCIÓN con fondo morado */
+  section.folder{margin:0 0 14px;border-radius:var(--radius);overflow:hidden;color:var(--text);
+    background:var(--card);border:1px solid var(--line);box-shadow:0 6px 22px rgba(20,10,40,.18)}
+  .folder>summary{list-style:none;cursor:pointer;padding:20px 24px;display:flex;
+    align-items:center;gap:14px;user-select:none}
+  .folder>summary::-webkit-details-marker{display:none}
+  .folder>summary:hover{background:#f5f0fc}
+  .dot{width:12px;height:12px;border-radius:50%;background:var(--violet);flex:none}
+  .fname{font-size:19px;font-weight:700;flex:1}
+  .count{color:var(--purple);font-size:13px;font-weight:600;background:var(--chip);
+    border-radius:999px;padding:4px 12px}
+  .arrow{color:var(--muted);transition:transform .2s;font-size:13px}
+  details[open]>summary .arrow{transform:rotate(90deg)}
+  .body{padding:2px 18px 20px}
+  .desc{color:var(--muted);font-size:14px;padding:0 4px 14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:11px}
+  .card{display:flex;gap:13px;align-items:flex-start;background:var(--card);
+    border-radius:16px;padding:14px 16px;transition:.16s;color:var(--text)}
+  .card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.20)}
+  .ico{font-size:21px;line-height:1.1;flex:none;width:40px;height:40px;border-radius:12px;
+    background:var(--chip);display:flex;align-items:center;justify-content:center}
+  .ttl{font-size:14.5px;font-weight:500;word-break:break-word}
+  .tags{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+  .tag{font-size:11px;color:var(--purple);background:var(--chip);border-radius:7px;
+    padding:3px 8px;font-weight:500}
+  .sub-folder{margin:14px 4px 4px;border-left:3px solid var(--lavender);padding-left:16px}
+  .sub-folder>.sf-name{font-weight:700;color:var(--purple-dark);margin:16px 0 10px;font-size:15px}
+
+  /* Sección destacada */
+  .folder.featured{color:#fff;background:linear-gradient(135deg,#4b1a8b 0%,#7f2df6 100%);
+    border:none;box-shadow:0 0 0 3px var(--lavender-light),0 20px 52px rgba(104,37,205,.34)}
+  .folder.featured>summary{padding:26px 24px}
+  .folder.featured>summary:hover{background:rgba(255,255,255,.07)}
+  .folder.featured .fname{font-size:24px;color:#fff}
+  .folder.featured .desc{color:#fff}
+  .folder.featured .count{color:#fff;background:rgba(255,255,255,.2)}
+  .folder.featured .arrow{color:rgba(255,255,255,.85)}
+  .folder.featured .dot{width:15px;height:15px;background:#fff;box-shadow:0 0 0 5px rgba(255,255,255,.25)}
+  .folder.featured .sub-folder{border-left-color:rgba(255,255,255,.6)}
+  .folder.featured .sub-folder>.sf-name{color:#fff}
+  .badge{background:#fff;color:var(--purple-dark);font-size:11.5px;font-weight:700;
+    border-radius:999px;padding:5px 13px;letter-spacing:.02em;white-space:nowrap}
+
+  .hidden{display:none!important}
+  .empty{color:#b3a8d4;text-align:center;padding:46px;display:none;font-size:15px}
+  footer{margin:40px 0 70px;color:#b3a8d4;font-size:13px;text-align:center;
+    border-top:1px solid rgba(255,255,255,.12);padding-top:28px}
+  .pill{display:inline-block;background:var(--chip);border-radius:999px;padding:4px 13px;
+    color:var(--purple-dark);font-weight:500}
+  /* Botón flotante de Franky (chatbot de soporte) */
+  .franky{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:11px;
+    background:linear-gradient(135deg,var(--purple),var(--violet));color:#fff;
+    padding:12px 20px 12px 13px;border-radius:999px;font-weight:700;font-size:14px;
+    border:none;cursor:pointer;font-family:inherit;
+    box-shadow:0 14px 34px rgba(104,37,205,.5);transition:transform .16s,box-shadow .16s}
+  .franky:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(104,37,205,.6)}
+  .franky-ico{background:#fff;width:38px;height:38px;border-radius:50%;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;flex:none}
+  @media(max-width:560px){.franky-txt{display:none}.franky{padding:14px;gap:0}}
+  .franky-ico img{width:100%;height:100%;object-fit:cover}
+  .fk-modal{position:fixed;inset:0;z-index:100;display:none}
+  .fk-modal.open{display:block}
+  .fk-backdrop{position:absolute;inset:0;background:rgba(20,10,40,.62);backdrop-filter:blur(3px)}
+  .fk-dialog{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:min(960px,93vw);height:min(86vh,820px);background:#fff;border-radius:22px;
+    overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .fk-head{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:linear-gradient(135deg,var(--purple),var(--violet));color:#fff;padding:12px 16px}
+  .fk-title{display:flex;align-items:center;gap:9px;font-weight:700}
+  .fk-title img{width:24px;height:24px;object-fit:contain;background:#fff;border-radius:50%;padding:2px}
+  .fk-actions{display:flex;align-items:center;gap:12px}
+  .fk-open{color:#fff;font-size:13px;font-weight:600;text-decoration:underline;white-space:nowrap}
+  .fk-close{background:rgba(255,255,255,.2);color:#fff;border:none;border-radius:50%;
+    width:30px;height:30px;font-size:15px;cursor:pointer;line-height:1}
+  .fk-close:hover{background:rgba(255,255,255,.35)}
+  .fk-frame{flex:1;width:100%;border:0}
+  .fk-note{font-size:12px;color:var(--muted);text-align:center;padding:9px 12px;background:var(--chip)}
+  /* Banner de Franky */
+  .franky-banner{display:flex;align-items:center;gap:18px;flex-wrap:wrap;color:#fff;
+    background:linear-gradient(135deg,#5a1fb0,#7f2df6);border-radius:22px;padding:20px 24px;
+    margin:0 0 22px;box-shadow:0 14px 38px rgba(75,26,139,.3)}
+  .fb-logo{width:78px;height:78px;border-radius:50%;background:#fff;flex:none;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,.2)}
+  .fb-logo img{width:100%;height:100%;object-fit:cover}
+  .fb-body{flex:1;min-width:240px}
+  .fb-body h3{margin:0 0 5px;font-size:19px}
+  .fb-body p{margin:0 0 9px;opacity:.95;font-size:14px}
+  .fb-tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
+  .fb-tags li{background:rgba(255,255,255,.18);border-radius:999px;padding:4px 11px;font-size:12.5px;font-weight:500}
+  .fb-cta{background:#fff;color:var(--purple-dark);border:none;border-radius:999px;padding:13px 24px;
+    font-weight:700;font-size:14px;cursor:pointer;font-family:inherit;white-space:nowrap;display:inline-block;
+    text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.18);transition:transform .15s}
+  .pulppo-banner{background:linear-gradient(135deg,#4b1a8b,#6a34c9)}
+  .pulppo-banner .fb-logo img{object-fit:contain;padding:9px}
+  /* Ruta de capacitación (mapa) */
+  .ruta{margin:30px 0 10px}
+  .ruta-title{font-size:24px;font-weight:700;margin:0 0 4px}
+  .ruta-sub{color:#c9bfe6;font-size:14px;margin:0 0 18px}
+  .ruta-map{display:flex;align-items:flex-start;overflow-x:auto;padding:6px 2px 14px}
+  .node{flex:0 0 132px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;text-decoration:none}
+  .node:not(:last-child)::after{content:"";position:absolute;top:22px;left:50%;width:100%;height:3px;background:var(--lavender);opacity:.55;z-index:0}
+  .node .circle{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));
+    color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;
+    position:relative;z-index:1;box-shadow:0 6px 16px rgba(104,37,205,.45);transition:transform .15s}
+  .node:hover .circle{transform:scale(1.1)}
+  .node .nlbl{margin-top:9px;font-size:11.5px;color:#d9d0ef;line-height:1.25;max-width:120px}
+  /* Timeline de publicación de propiedades */
+  .pub-timeline{display:flex;overflow-x:auto;gap:0;padding:14px 4px 22px}
+  .pub-step{flex:0 0 200px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;padding:0 16px}
+  .pub-step:not(:last-child)::after{content:"";position:absolute;top:25px;left:calc(50% + 25px);width:calc(100% - 18px);height:3px;
+    background:linear-gradient(90deg,var(--lavender),var(--violet));opacity:.55;z-index:0}
+  .pub-step .circle{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--violet));
+    color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;flex:none;
+    position:relative;z-index:1;box-shadow:0 8px 20px rgba(104,37,205,.5);transition:transform .15s;border:3px solid rgba(255,255,255,.18)}
+  .pub-step:hover .circle{transform:scale(1.08)}
+  .pub-step .pt{margin-top:13px;font-weight:700;font-size:14.5px;color:#fff}
+  .pub-step .pd{margin-top:5px;font-size:12.5px;color:#c9bfe6;line-height:1.4;max-width:170px}
+  @media(max-width:640px){.pub-step{flex-basis:170px}}
+  .ruta-adic-wrap{margin-top:10px}
+  .adic-title{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:#c9bfe6;font-weight:700}
+  .adic-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px}
+  .adic-chip{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12.5px;color:var(--purple-dark);font-weight:500}
+  /* Reconocimiento de graduada (imagen, al final) */
+  .grad-cert{margin:46px 0 6px;text-align:center}
+  .grad-cert-title{font-size:26px;font-weight:700;margin:0 0 6px}
+  .grad-cert-sub{color:#c9bfe6;font-size:15px;max-width:620px;margin:0 auto 22px}
+  .grad-cert img{max-width:100%;width:780px;border-radius:16px;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);border:1px solid var(--line)}
+  .fb-cta:hover{transform:translateY(-2px)}
+  .fb-access{margin:11px 0 0;font-size:13px;font-weight:600;display:inline-block;
+    background:rgba(255,255,255,.16);padding:6px 13px;border-radius:999px}
+  @media(max-width:760px){h1{font-size:30px}.hero-logo{max-height:150px}.gallery img{width:150px;height:104px}}
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="nav">
+      <span class="brand">tuhabi · Franquicias</span>
+      <span class="src">Fuente: <a href="https://drive.google.com/drive/folders/0AEufllMjJblRUk9PVA">Google Drive ↗</a></span>
+    </div>
+    <div class="logo-stage" id="logos">
+      <img class="hero-logo" src="assets/tuhabi-logo.png" alt="Tuhabi">
+    </div>
+    <div class="eyebrow">Hub Franquicias MX</div>
+    <h1>Todo el material de Franquicias en un solo lugar</h1>
+    <div class="tagline">Es simple, es seguro, es Tuhabi.</div>
+    <div class="gallery" id="gallery">
+      <img src="assets/gallery-equipo.jpg" alt="Equipo Tuhabi">
+      <img src="assets/gallery-evento.jpg" alt="Brokers en evento">
+      <img src="assets/gallery-kickoff.jpg" alt="Kick Off Franquicias">
+      <img src="assets/gallery-comunidad.jpg" alt="Comunidad de asesores">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="finder" id="finder">
+      <input id="finder-input" class="finder-input" type="search" autocomplete="off"
+        placeholder="🔎  Busca un tema: comisiones, PLD, Pulppo, checklist, captación, lonas, DISC…">
+      <div class="finder-results" id="finder-results"></div>
+    </div>
+
+    <div class="franky-banner">
+      <div class="fb-logo"><img src="assets/franky-logo.png" alt="Franky"></div>
+      <div class="fb-body">
+        <h3>Conoce a Franky, tu soporte de Franquicias 🤖</h3>
+        <p>Franky responde al instante tus dudas sobre:</p>
+        <ul class="fb-tags">
+          <li>Preguntas técnicas de Pulppo y sus funcionalidades</li>
+          <li>Procesos del programa</li>
+          <li>Directorio de servicios complementarios (Master Brokers)</li>
+          <li>Dudas frecuentes del programa University</li>
+        </ul>
+        <p class="fb-access">🔒 Acceso únicamente con tu correo <b>@tuhabi.mx</b></p>
+      </div>
+      <button class="fb-cta" type="button" data-franky>Abrir Franky ↗</button>
+    </div>
+    <div class="franky-banner pulppo-banner">
+      <div class="fb-logo"><img alt="Pulppo" src="assets/pulppo.png"></div>
+      <div class="fb-body">
+        <h3>Accede a Pulppo 🏠</h3>
+        <p>La plataforma operativa para gestionar tus propiedades, clientes y operaciones.</p>
+        <p class="fb-access">🔑 Recuerda: ingresa a Pulppo con tu <b>correo y contraseña de Google corporativo</b>.</p>
+      </div>
+      <a class="fb-cta" href="https://broker.pulppo.com/login" target="_blank" rel="noopener">Abrir Pulppo ↗</a>
+    </div>
+
+    <div class="franky-banner" style="background:linear-gradient(135deg,#1f8a5c,#34c98a)">
+      <div class="fb-logo"><img src="assets/calculadora-comisiones.png" alt="Calculadora de comisiones Tuhabi" style="object-fit:cover;object-position:top"></div>
+      <div class="fb-body">
+        <h3>Calculadora de comisiones 🧮</h3>
+        <p>Calcula al instante la comisión de tu operación según el valor de la propiedad, el tipo de crédito y el porcentaje pactado, antes de presentarle la oferta a tu cliente.</p>
+      </div>
+      <a class="fb-cta" href="https://tuhabi-calculadora-comisiones.netlify.app/" target="_blank" rel="noopener">Abrir calculadora ↗</a>
+    </div>
+
+    <div class="franky-banner" style="background:linear-gradient(135deg,#b5590c,#f0902f)">
+      <div class="fb-logo"><img src="assets/portal-brokers.png" alt="Portal de Brokers Tuhabi" style="object-fit:cover;object-position:top left"></div>
+      <div class="fb-body">
+        <h3>Portal de Brokers Tuhabi 🏘️</h3>
+        <p>Consulta el inventario activo de propiedades disponibles para ofrecer a tus clientes dentro del Portal de Brokers de Tuhabi.</p>
+      </div>
+      <a class="fb-cta" href="https://brokers.tuhabi.mx/inventario" target="_blank" rel="noopener">Ver inventario ↗</a>
+    </div>
+
+    <div class="franky-banner" style="background:linear-gradient(135deg,#0f4c81,#2a86c9)">
+      <div class="fb-logo"><img src="assets/habicredit-logo.png" alt="HabiCredit" style="object-fit:contain;padding:12px"></div>
+      <div class="fb-body">
+        <h3>HabiCredit — crédito hipotecario 🏦</h3>
+        <p>El broker hipotecario de Tuhabi: gestiona el crédito de tu cliente desde el perfilamiento hasta la escrituración, con alianzas bancarias y tasas desde 9.49%. Servicio gratuito para tu cliente y comisión para ti de 0.3% del crédito ($3,000 por millón) al escriturar. Productos: <b>Habicredit100</b> (usa solo el crédito Infonavit, sin diferencia a cubrir) y <b>Habicredit bancario</b> (crédito con banco). Requisitos base: ingreso comprobable de $15,000, buen historial en buró y ahorro mínimo del 8% del valor del inmueble.</p>
+        <p>Contacta por llamada o correo a tu agente Habicredit asignado para dar seguimiento a tus solicitudes:</p>
+        <ul class="fb-tags">
+          <li>📞 Rubí González · 55 7499 3059 · rubigonzalez@tuhabi.mx</li>
+          <li>📞 Leonel Bernal · 55 3165 2330 · leonelbernal@tuhabi.mx</li>
+          <li>📞 Ana López · 55 6707 9777 · anaolmos@tuhabi.mx</li>
+        </ul>
+      </div>
+      <a class="fb-cta" href="https://habicredit.mx/" target="_blank" rel="noopener">Ir a HabiCredit ↗</a>
+    </div>
+
+    <div class="franky-banner" id="anticipo" style="background:linear-gradient(135deg,#4b1a8b,#6a34c9)">
+      <div class="fb-logo" style="font-size:34px">📄</div>
+      <div class="fb-body">
+        <h3>Anticipo y garantía de cumplimiento 📄</h3>
+        <p>Guía para explicarle a comprador y vendedor cómo funciona el depósito de anticipo o garantía de cumplimiento: cuánto se paga, quién lo resguarda, cuándo se reembolsa y cómo se reparten las comisiones al cierre.</p>
+      </div>
+      <a class="fb-cta" href="https://docs.google.com/document/d/19myOxMhlxdF2PBv98ddHVT89N50dnRygzYyY-KhKWNs/export?format=docx" target="_blank" rel="noopener">Descargar documento ↓</a>
+    </div>
+
+    <div class="franky-banner" style="background:linear-gradient(135deg,#1d1330,#4b1a8b)">
+      <div class="fb-logo"><img src="assets/checklist-comprador.png" alt="Checklist del expediente del comprador" style="object-fit:cover;object-position:top"></div>
+      <div class="fb-body">
+        <h3>Checklist del expediente del comprador ✅</h3>
+        <p>Después de la firma de contrato y el pago del depósito —garantía de cumplimiento o anticipo—, el broker vendedor debe entregarte el expediente completo del cliente comprador según el esquema de compra. Aquí tienes el checklist que corresponde a cada esquema.</p>
+      </div>
+      <a class="fb-cta" href="https://checklist-expediente-comprador.netlify.app/" target="_blank" rel="noopener">Abrir checklist ↗</a>
+    </div>
+
+    <section class="ruta" id="publicacion">
+      <h2 class="ruta-title">📢 Publicación de propiedades</h2>
+      <p class="ruta-sub">Vender o promocionar inmuebles a través de la red de Franquicias Tuhabi, Pulppo y Brokers Tuhabi acelera significativamente el tiempo de venta, garantizando una excelente experiencia para el cliente y generando más referidos.</p>
+      <p class="ruta-sub">Tus propiedades captadas bajo el perfil Tuhabi seguirán este flujo de publicación:</p>
+      <div class="pub-timeline">
+        <div class="pub-step"><span class="circle">1</span><span class="pt">Negociación</span><span class="pd">Acuerdos entre tú y el propietario.</span></div>
+        <div class="pub-step"><span class="circle">2</span><span class="pt">Carga en Pulppo</span><span class="pd">Registro de la propiedad en el sistema.</span></div>
+        <div class="pub-step"><span class="circle">3</span><span class="pt">Expediente</span><span class="pd">Subir documento en Pulppo (Acuerdo comercial-Iniciar).</span></div>
+        <div class="pub-step"><span class="circle">4</span><span class="pt">Notificación</span><span class="pd">Aviso a tu consultor asignado para la revisión inicial.</span></div>
+        <div class="pub-step"><span class="circle">5</span><span class="pt">Cumplimiento</span><span class="pd">Validación de PLD (Prevención de Lavado de Dinero).</span></div>
+        <div class="pub-step"><span class="circle">6</span><span class="pt">Revisión Legal</span><span class="pd">Dictamen de documentos y generación del contrato.</span></div>
+        <div class="pub-step"><span class="circle">7</span><span class="pt">Publicación inicial</span><span class="pd">Visibilidad de la propiedad en Pulppo.</span></div>
+        <div class="pub-step"><span class="circle">8</span><span class="pt">Control de calidad</span><span class="pd">Aprobación de la publicación por parte del consultor.</span></div>
+        <div class="pub-step"><span class="circle">9</span><span class="pt">Publicación final</span><span class="pd">Alta en el portal de Habi con su respectivo NID en el Portal de Brokers Tuhabi.</span></div>
+      </div>
+    </section>
+
+    <section class="ruta" id="video-pulppo">
+      <h2 class="ruta-title">🎥 Carga de documentos de propiedades en Pulppo</h2>
+      <p class="ruta-sub">Aquí te dejamos el video de cómo y en dónde subir los documentos de tu propiedad desde Pulppo.</p>
+      <div style="position:relative;padding-top:56.25%;border-radius:18px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35)">
+        <iframe src="https://drive.google.com/file/d/1Ks9HJ8QFoQG25bOfzY38fpvsKQX8Rb1d/preview" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" allow="autoplay" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <div class="note">A continuación encontrarás los materiales descargables. Haz clic en el archivo que necesites para que se descargue automáticamente. Luego, súbelo a tu Google Drive corporativo para visualizarlo y editarlo.</div>
+
+    <div class="ruta-adic-wrap" style="margin:26px 0;display:none"><span class="adic-title">Sesiones adicionales</span><div id="ruta-adic" class="adic-list"></div></div>
+
+    <nav class="toc" id="toc" style="display:none"></nav>
+    <div id="root"></div>
+    <section class="ruta" id="consultores">
+      <h2 class="ruta-title">🤝 Consultores Franquicias</h2>
+      <p class="ruta-sub">Tu equipo de acompañamiento durante el onboarding. Escríbeles directo por WhatsApp o correo.</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">
+        <div class="card" style="flex-direction:column;align-items:stretch;gap:10px">
+          <img src="assets/consultor-marcos-foto.jpg" alt="Marcos Martínez" style="width:100%;border-radius:14px;object-fit:cover;max-height:220px">
+          <div>
+            <span class="ttl" style="font-size:17px;font-weight:700">Marcos Martínez</span><br>
+            <span class="ttl" style="font-weight:500;color:var(--muted)">Coordinador University Franquicias MX</span>
+            <p class="desc" style="padding:6px 0">Historiador contemporáneo apasionado por la enseñanza. Más de 10 años diseñando y ejecutando planes de capacitación corporativa. Te acompaña durante tus primeros 3 meses de onboarding.</p>
+            <div class="tags">
+              <span class="tag">📱 WA 55 2372 4755</span>
+              <span class="tag">✉️ marcosmartinez@tuhabi.mx</span>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="flex-direction:column;align-items:stretch;gap:10px">
+          <img src="assets/consultora-fanny-foto.png" alt="Fanny Rogel Ortiz" style="width:100%;border-radius:14px;object-fit:cover;max-height:220px">
+          <div>
+            <span class="ttl" style="font-size:17px;font-weight:700">Fanny Rogel Ortiz</span><br>
+            <span class="ttl" style="font-weight:500;color:var(--muted)">Consultora Franquicias MX</span>
+            <p class="desc" style="padding:6px 0">Licenciada en Derecho con enfoque en el sector inmobiliario, especializada en el acompañamiento y gestión de operaciones. Experiencia en Notaría 15 y Notaría 95 CDMX.</p>
+            <div class="tags">
+              <span class="tag">📱 WA 55 1456 2160</span>
+              <span class="tag">✉️ loydirogel@tuhabi.mx</span>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="flex-direction:column;align-items:stretch;gap:10px">
+          <img src="assets/consultor-david-foto.jpg" alt="David Sánchez Mendizabal" style="width:100%;border-radius:14px;object-fit:cover;max-height:220px">
+          <div>
+            <span class="ttl" style="font-size:17px;font-weight:700">David Sánchez Mendizabal</span><br>
+            <span class="ttl" style="font-weight:500;color:var(--muted)">Consultor en Franquicias MX</span>
+            <p class="desc" style="padding:6px 0">Especialista en captación, negociación y comercialización de inventario, con 10 años de experiencia en vivienda nueva, mercado abierto y proptechs. Fue Coordinador Buyers en Tuhabi (Querétaro y Guanajuato).</p>
+            <div class="tags">
+              <span class="tag">📱 WA 56 1150 3977</span>
+              <span class="tag">✉️ davidmendizabal@tuhabi.mx</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Creado por <span class="pill">Marcos Erick Martínez Ramírez · Coord. University Franquicias</span><br>
+      Es un índice navegable: el contenido vive en Google Drive y se actualiza ahí.
+    </footer>
+  </div>
+
+  <button class="franky" id="frankyBtn" type="button" data-franky title="Pregúntale a Franky — chatbot de soporte de Franquicias">
+    <span class="franky-ico"><img src="assets/franky-logo.png" alt="Franky"></span>
+    <span class="franky-txt">¿Dudas? Pregúntale a Franky</span>
+  </button>
+
+<script>
+const ICON={presentation:"📊",document:"📄",pdf:"📕",spreadsheet:"📈",image:"🖼️",video:"🎬",shortcut:"🔗"};
+const KIND ={presentation:"Slides",document:"Doc",pdf:"PDF",spreadsheet:"Sheet",image:"Imagen",video:"Video",shortcut:"Acceso directo"};
+
+// Convierte cualquier liga de Drive/Docs/Slides/Sheets en una liga de descarga directa
+function downloadUrl(u){
+  const m=u.match(/\/d\/([^/]+)/);
+  if(!m) return u;
+  const id=m[1];
+  if(u.includes("docs.google.com/presentation")) return `https://docs.google.com/presentation/d/${id}/export/pptx`;
+  if(u.includes("docs.google.com/document")) return `https://docs.google.com/document/d/${id}/export?format=docx`;
+  if(u.includes("docs.google.com/spreadsheets")) return `https://docs.google.com/spreadsheets/d/${id}/export?format=xlsx`;
+  return `https://drive.google.com/uc?export=download&id=${id}`;
+}
+
+const DATA=[
+ {n:"Material general", id:"general", d:"Material transversal del proyecto.", files:[
+   {t:"Alineación Operativa",k:"pdf",u:"https://drive.google.com/file/d/1FU9Nm26mwK_t91_t1PKQzQrEh7Xha-UD/view"},
+ ]},
+ {n:"Formatos de identidad Tuhabi", id:"identidad", feat:true, d:"Plantillas de lonas, posters, firma electrónica y presentación a propietarios. La base visual que todos deben usar.", files:[
+   {t:"Plantillas para Lonas franquicias",k:"presentation",u:"https://docs.google.com/presentation/d/1Dl3-qRPebiKFMtuidI1W7vDjhQ2druCoHanMdlTRDqM/edit"},
+   {t:"Plantillas Lonas verticales",k:"presentation",u:"https://docs.google.com/presentation/d/1xJ4tzvD1_p4sL6ud3KDm8Q0RvDfVzXw7G354jgV-DoM/edit"},
+   {t:"Posters horizontales",k:"presentation",u:"https://docs.google.com/presentation/d/11Cte33bbLQ2PlbvGfh9ncW8D2Vi2o2rhm2Q5uvQy2O4/edit"},
+   {t:"Posters verticales",k:"presentation",u:"https://docs.google.com/presentation/d/1TGcPJLSmN3YF-rHA8qVh8wMqkPp4K4OV2sq8AJLdlAI/edit"},
+   {t:"Firma electrónica para Gmail (editable)",k:"presentation",u:"https://docs.google.com/presentation/d/1NDgF2A8kOUxE3k9Ss5_RlyQTM3-norbGldy9RW7MEsI/edit"},
+   {t:"Presentación a propietarios",k:"presentation",u:"https://docs.google.com/presentation/d/1fa0OdUXx9lkzqwgN3sH0wnWZa69V8BjV05fq5NWer-c/edit"},
+ ]},
+ {n:"Presentaciones de capacitaciones", id:"capacitaciones", d:"Trainings y materiales formativos, organizados por tema.", files:[
+   {t:"#Training virtual: Performance marketing — Andrés Ponte (grabación)",k:"video",u:"https://drive.google.com/file/d/1BqWVyRXGeLm5nHMGB2Ed9ndHgzhG6mho/view",s:"1.13 GB"},
+ ], sub:[
+   {n:"Exentar ISR", files:[
+     {t:"¿Cómo exentar ISR?",k:"pdf",u:"https://drive.google.com/file/d/1I3wkFRpqK06Y1-0Kt--mDSuV-qjFIuX-/view"},
+     {t:"Apoyo visual ISR (1)",k:"image",u:"https://drive.google.com/file/d/1XlD4XMVOmw4Yvden7Hy-iA2bbcmcZB9v/view"},
+     {t:"Apoyo visual ISR (2)",k:"image",u:"https://drive.google.com/file/d/1RF0DNk0nBm5S_x52_wqm7n7DfVUWONv9/view"},
+     {t:"Apoyo visual ISR (3)",k:"image",u:"https://drive.google.com/file/d/1vpwbn7QIKMoqPqhC2o0WKiLUmMmeWcXR/view"},
+   ]},
+   {n:"Completitud de documentos", files:[
+     {t:"Completitud en captación — Freddy Aguilar",k:"pdf",u:"https://drive.google.com/file/d/1iEGBGW-tTaCxOU5QC41BGEza3sbjHykG/view"},
+   ]},
+   {n:"Cómo ser un buen comercial para captación", files:[
+     {t:"Introducción a la captación",k:"pdf",u:"https://drive.google.com/file/d/1SIv_u0ZrNW5MC9lBfI2TOoTBIlr6-d9s/view"},
+     {t:"Buen comercial para brokers — Camilo García",k:"pdf",u:"https://drive.google.com/file/d/1foUmrvUyH4tItpGjnru6g5O2q2paT1B-/view"},
+   ]},
+   {n:"DISC (tipos de clientes)", files:[
+     {t:"Tipos de cliente DISC",k:"pdf",u:"https://drive.google.com/file/d/1d_FcMp8W5lrBD9EFVnXl363oDhl56FxL/view"},
+     {t:"DISC franquicias",k:"pdf",u:"https://drive.google.com/file/d/1rh6v-ekXQfeYhdWpbcI7c7NaxrhF8tzE/view"},
+   ]},
+   {n:"Habi Learn", files:[
+     {t:"Cursos Habi University",k:"presentation",u:"https://docs.google.com/presentation/d/1EqrHszS_DTDMqN7XswnCHRVF64jV0RigWz06EI_kylM/edit"},
+   ]},
+   {n:"Creación de campañas RSS", files:[
+     {t:"Performance — Brokers, Leo Herrera 2026",k:"pdf",u:"https://drive.google.com/file/d/1g10gHJPtTUE0MgLrM0Q1sFRGcwMuy4xS/view"},
+   ]},
+   {n:"ADN Tuhabi + speech (propósito y valores)", files:[
+     {t:"ADN Tuhabi + speech (propósito y valores)",k:"pdf",u:"https://drive.google.com/file/d/16IdU1LfQxnoauyXa8zFKdfktxhu8T8ee/view"},
+     {t:"Speech comercial de captación",k:"pdf",u:"https://drive.google.com/file/d/1SUi_o-1oNB9MpasxXRYGEbdxe2uxbPUt/view"},
+     {t:"Entrevista de perfilamiento",k:"document",u:"https://drive.google.com/file/d/10FFn2STV3QqzjOxIpT5kWQ7LRhi3dRut/view"},
+   ]},
+ ]},
+ {n:"Manuales", id:"manuales", d:"Guías operativas de alta de asesores, accesos y captación.", files:[
+   {t:"Alta de asesores en Pulppo — para Master Brokers",k:"pdf",u:"https://drive.google.com/file/d/1kr_GsoicajW102k5BQvMr_zutizUI_vu/view"},
+   {t:"Acceso a Google y Pulppo — para asesores y MB",k:"pdf",u:"https://drive.google.com/file/d/1x53ueqFEdzU49QFIpuMj4ncg37a8YMdH/view"},
+   {t:"Guía de captación",k:"image",u:"https://drive.google.com/file/d/1Ji_XGiwFABdpfTpDcNABNJWN322DobUR/view"},
+ ]},
+ {n:"Cumplimiento", id:"cumplimiento", d:"Lineamientos, checklist de expediente y PLD (única copia canónica de cada documento).", files:[
+   {t:"Lineamientos de cumplimiento Franquicias",k:"pdf",u:"https://drive.google.com/file/d/1xdgF8dCRb14YyGU6FtNytRumd7uDFcap/view"},
+   {t:"Check list expediente único de captación",k:"pdf",u:"https://drive.google.com/file/d/1-TYgl6p8HF2e0vhboFsspuoVdc-0ObC2/view"},
+   {t:"¿Qué es el PLD? (Prevención de Lavado de Dinero)",k:"pdf",u:"https://drive.google.com/file/d/1Gefu0wx58s9GYtGCdypNyhoESc9DkO3K/view"},
+ ]},
+ {n:"Módulo de captación", id:"captacion", d:"Documentación del proceso de captación.", files:[
+   {t:"Documentos para captación",k:"pdf",u:"https://drive.google.com/file/d/1Vgm5e7KUtXgisnDKgCmuGXy0_LPBX2qh/view"},
+ ]},
+];
+
+function card(f){
+  const ico=ICON[f.k]||"📄", kind=KIND[f.k]||f.k;
+  const size=f.s?`<span class="tag">${f.s}</span>`:"";
+  return `<a class="card" href="${downloadUrl(f.u)}" target="_blank" rel="noopener" data-name="${f.t.toLowerCase()}">
+    <span class="ico">${ico}</span>
+    <span><span class="ttl">${f.t}</span><span class="tags"><span class="tag">${kind}</span>${size}</span></span>
+  </a>`;
+}
+function countFiles(s){let n=(s.files||[]).length;(s.sub||[]).forEach(x=>n+=x.files.length);return n;}
+
+// Abrir Franky en ventana emergente real (el iframe no sirve: el login de Google entra en bucle)
+function openFranky(){
+  const u="https://notebooklm.google.com/notebook/90d7e703-df84-4b53-a423-e289b812c8be/preview";
+  const w=1040,h=820,left=Math.max(0,(screen.width-w)/2),top=Math.max(0,(screen.height-h)/2);
+  const win=window.open(u,"frankyChat",`popup=yes,width=${w},height=${h},left=${left},top=${top}`);
+  if(!win){ window.open(u,"_blank","noopener"); }
+}
+document.querySelectorAll("[data-franky]").forEach(el=>el.addEventListener("click",openFranky));
+
+// Sesiones adicionales
+const ADIC=[
+  {t:"Sesión de dudas sobre plataforma"},
+  {t:"Alineación operativa",u:"https://drive.google.com/file/d/1FU9Nm26mwK_t91_t1PKQzQrEh7Xha-UD/view"},
+  {t:"Contabilidad y ROI nivel 1"},
+];
+const adic=document.getElementById("ruta-adic");
+ADIC.forEach(a=>{
+  const tag=a.u?"a":"span"; const href=a.u?` href="${downloadUrl(a.u)}" target="_blank" rel="noopener"`:"";
+  adic.insertAdjacentHTML("beforeend",`<${tag} class="adic-chip"${href}>${a.t}</${tag}>`);
+});
+
+const root=document.getElementById("root"), toc=document.getElementById("toc");
+const ORDER=[...DATA].sort((a,b)=>(b.feat===true)-(a.feat===true));
+ORDER.forEach((s,i)=>{
+  toc.insertAdjacentHTML("beforeend",`<a href="#${s.id}" class="${s.feat?'tocfeat':''}">${s.n} · ${countFiles(s)}</a>`);
+  let inner=s.d?`<div class="desc">${s.d}</div>`:"";
+  if((s.files||[]).length) inner+=`<div class="grid">${s.files.map(card).join("")}</div>`;
+  (s.sub||[]).forEach(sf=>{
+    inner+=`<div class="sub-folder"><div class="sf-name">📁 ${sf.n} · ${sf.files.length}</div>
+      <div class="grid">${sf.files.map(card).join("")}</div></div>`;
+  });
+  const feat=s.feat?" featured":"";
+  const badge=s.feat?`<span class="badge">★ Esencial para todos</span>`:"";
+  root.insertAdjacentHTML("beforeend",
+   `<details class="folder${feat}" id="${s.id}" ${(s.feat||i<3)?"open":""}>
+      <summary><span class="dot"></span><span class="fname">${s.n}</span>${badge}
+      <span class="count">${countFiles(s)}</span><span class="arrow">▶</span></summary>
+      <div class="body">${inner}</div>
+    </details>`);
+});
+
+// Buscador inteligente: palabras clave -> sección o app relacionada
+const FINDER_INDEX=[
+  {t:"Franky — soporte de Franquicias",s:"Chatbot de dudas sobre Pulppo, procesos y University",ico:"🤖",tag:"App",kw:["franky","soporte","dudas","chatbot","ayuda","preguntas"],action:()=>openFranky()},
+  {t:"Pulppo — iniciar sesión",s:"Plataforma operativa para gestionar propiedades y clientes",ico:"🏠",tag:"App",kw:["pulppo","login","iniciar sesion","plataforma","acceso"],action:()=>window.open("https://broker.pulppo.com/login","_blank","noopener")},
+  {t:"Calculadora de comisiones",s:"Calcula la comisión de tu operación",ico:"🧮",tag:"App",kw:["comision","comisiones","calculadora","porcentaje","hc100","habicredit100"],action:()=>window.open("https://tuhabi-calculadora-comisiones.netlify.app/","_blank","noopener")},
+  {t:"Portal de Brokers Tuhabi",s:"Inventario de propiedades disponibles",ico:"🏘️",tag:"App",kw:["inventario","portal de brokers","propiedades disponibles","brokers tuhabi"],action:()=>window.open("https://brokers.tuhabi.mx/inventario","_blank","noopener")},
+  {t:"HabiCredit — crédito hipotecario",s:"Infonavit, Cofinavit, bancario y contactos de agentes",ico:"🏦",tag:"App",kw:["habicredit","credito","hipotecario","infonavit","cofinavit","bancario","fovissste","rubi","leonel","ana lopez"],action:()=>window.open("https://habicredit.mx/","_blank","noopener")},
+  {t:"Anticipo y garantía de cumplimiento",s:"Cómo funciona el depósito y el reparto de comisiones",ico:"📄",tag:"Sección",kw:["anticipo","garantia","cumplimiento","deposito","reembolso"],action:()=>scrollToId("anticipo")},
+  {t:"Checklist del expediente del comprador",s:"App con checklist descargable por esquema de crédito",ico:"✅",tag:"App",kw:["checklist","expediente","documentos comprador","recursos propios","sic","kyc"],action:()=>window.open("https://checklist-expediente-comprador.netlify.app/","_blank","noopener")},
+  {t:"Publicación de propiedades",s:"Flujo de 9 pasos: negociación, Pulppo, PLD, NID…",ico:"📢",tag:"Sección",kw:["publicacion","flujo","nid","pld","revision legal","control de calidad","negociacion"],action:()=>scrollToId("publicacion")},
+  {t:"Video: carga de documentos en Pulppo",s:"Cómo y dónde subir los documentos de tu propiedad",ico:"🎥",tag:"Sección",kw:["video","carga de documentos","subir documentos","tutorial pulppo"],action:()=>scrollToId("video-pulppo")},
+  {t:"Formatos de identidad Tuhabi",s:"Lonas, posters, firma electrónica, presentación a propietarios",ico:"⭐",tag:"Sección",kw:["brand","lonas","identidad","logotipo","poster","firma electronica","presentacion a propietarios"],action:()=>openFolder("identidad")},
+  {t:"Presentaciones de capacitaciones",s:"ISR, DISC, ADN Tuhabi, performance marketing…",ico:"🎓",tag:"Sección",kw:["capacitacion","training","isr","disc","captacion","buen comercial","adn tuhabi","performance marketing","habi learn"],action:()=>openFolder("capacitaciones")},
+  {t:"Manuales",s:"Alta de asesores, accesos a Google y Pulppo, guía de captación",ico:"📘",tag:"Sección",kw:["manual","manuales","alta de asesores","acceso a google","guia de captacion"],action:()=>openFolder("manuales")},
+  {t:"Cumplimiento",s:"Lineamientos, checklist de expediente y PLD",ico:"🛡️",tag:"Sección",kw:["cumplimiento","pld","lineamientos","lavado de dinero","checklist de expediente"],action:()=>openFolder("cumplimiento")},
+  {t:"Módulo de captación",s:"Documentación del proceso de captación",ico:"📥",tag:"Sección",kw:["captacion","modulo de captacion","documentos para captacion"],action:()=>openFolder("captacion")},
+  {t:"Consultores Franquicias",s:"Contacto de Marcos, Fanny y David por WhatsApp o correo",ico:"🤝",tag:"Sección",kw:["consultor","consultores","contacto","whatsapp","correo","marcos martinez","fanny rogel","david sanchez"],action:()=>scrollToId("consultores")},
+];
+
+function scrollToId(id,offset){
+  const el=document.getElementById(id);
+  if(!el) return;
+  const y=el.getBoundingClientRect().top+window.scrollY+(offset||-20);
+  window.scrollTo({top:y,behavior:"smooth"});
+}
+function openFolder(id){
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.open=true;
+  scrollToId(id,-20);
+}
+
+const finderInput=document.getElementById("finder-input"), finderResults=document.getElementById("finder-results");
+let finderHi=-1;
+
+function normalize(s){return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");}
+
+function renderFinder(term){
+  const q=normalize(term.trim());
+  finderHi=-1;
+  if(!q){ finderResults.classList.remove("open"); finderResults.innerHTML=""; return; }
+  const matches=FINDER_INDEX.filter(it=>normalize(it.t).includes(q)||it.kw.some(k=>normalize(k).includes(q)));
+  if(!matches.length){
+    finderResults.innerHTML=`<div class="finder-empty">Sin resultados para “${term}”. Prueba con otra palabra clave.</div>`;
+  } else {
+    finderResults.innerHTML=matches.slice(0,8).map((it,i)=>
+      `<div class="finder-item" data-idx="${i}">
+        <span class="fi-ico">${it.ico}</span>
+        <span class="fi-txt"><span class="fi-t">${it.t}</span><span class="fi-s">${it.s}</span></span>
+        <span class="fi-tag">${it.tag}</span>
+      </div>`).join("");
+    finderResults._matches=matches;
+    finderResults.querySelectorAll(".finder-item").forEach(el=>{
+      el.addEventListener("click",()=>{
+        matches[+el.dataset.idx].action();
+        finderResults.classList.remove("open");
+        finderInput.value="";
+        finderInput.blur();
+      });
+    });
+  }
+  finderResults.classList.add("open");
+}
+
+finderInput.addEventListener("input",()=>renderFinder(finderInput.value));
+finderInput.addEventListener("focus",()=>{ if(finderInput.value.trim()) renderFinder(finderInput.value); });
+finderInput.addEventListener("keydown",e=>{
+  const items=[...finderResults.querySelectorAll(".finder-item")];
+  if(!items.length) return;
+  if(e.key==="ArrowDown"){ e.preventDefault(); finderHi=Math.min(finderHi+1,items.length-1); }
+  else if(e.key==="ArrowUp"){ e.preventDefault(); finderHi=Math.max(finderHi-1,0); }
+  else if(e.key==="Enter"){ e.preventDefault(); if(finderHi>=0) items[finderHi].click(); return; }
+  else return;
+  items.forEach((el,i)=>el.classList.toggle("hi",i===finderHi));
+  items[finderHi].scrollIntoView({block:"nearest"});
+});
+document.addEventListener("click",e=>{
+  if(!document.getElementById("finder").contains(e.target)) finderResults.classList.remove("open");
+});
+</script>
+</body>
+</html>
